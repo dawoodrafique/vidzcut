@@ -1,26 +1,126 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #0b2a35;
+  --bg-2: #0f3a48;
+  --bg-3: #081d26;
+  --gold: #f9bf4b;
+  --gold-deep: #e0a02b;
+  --cream: #fde9a9;
+  --text: #f6ebc4;
+  --muted: rgba(246, 235, 196, 0.72);
+  --line: rgba(249, 191, 75, 0.18);
+  --card: rgba(255, 255, 255, 0.04);
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--bg);
+  --color-gold: var(--gold);
+  --color-cream: var(--cream);
+  --font-sans: var(--font-dm-sans), system-ui, sans-serif;
+  --font-display: var(--font-bricolage), var(--font-dm-sans), sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(1100px 600px at 12% -8%, #1d5a6c55, transparent 60%),
+    radial-gradient(900px 600px at 95% 30%, #4a4a2c40, transparent 60%),
+    radial-gradient(900px 700px at 20% 90%, #14465a55, transparent 60%),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-3) 100%);
+  background-attachment: fixed;
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+.container-x {
+  width: 100%;
+  max-width: 1120px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--gold);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+.eyebrow::after {
+  content: "";
+  width: 72px;
+  height: 1px;
+  background: var(--gold);
+  opacity: 0.7;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 12px;
+  padding: 14px 22px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1.5px solid transparent;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  cursor: pointer;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:focus-visible, a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+.btn-gold { background: linear-gradient(180deg, #ffd06a, var(--gold)); color: #2a1d00; }
+.btn-gold:hover { background: linear-gradient(180deg, #ffd978, #ffc65a); }
+.btn-ghost { border-color: rgba(253, 233, 169, 0.55); color: var(--cream); background: transparent; }
+.btn-ghost:hover { border-color: var(--gold); background: rgba(249, 191, 75, 0.08); }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+}
+
+.field {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 14px;
+  color: var(--text);
+}
+.field::placeholder { color: rgba(246, 235, 196, 0.4); }
+
+/* Hero timeline graphic */
+@keyframes playhead {
+  0% { left: 2%; }
+  100% { left: 98%; }
+}
+@keyframes bars {
+  0%, 100% { transform: scaleY(0.45); }
+  50% { transform: scaleY(1); }
+}
+.playhead { animation: playhead 9s linear infinite alternate; }
+.wave-bar { transform-origin: center; animation: bars 1.6s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .playhead, .wave-bar { animation: none; }
+  html { scroll-behavior: auto; }
 }
