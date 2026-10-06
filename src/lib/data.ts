@@ -41,7 +41,7 @@ export async function getVideos(
 ): Promise<Video[]> {
   try {
     const db = await getDb();
-    if (!db) return [];
+    if (!db) return process.env.NODE_ENV === "development" ? devSampleVideos(category) : [];
     const rows = await db
       .select()
       .from(videosTable)
@@ -52,4 +52,23 @@ export async function getVideos(
     console.error("getVideos failed", err);
     return [];
   }
+}
+
+/** Local preview only: shown when no DATABASE_URL is set and `next dev` is running. */
+function devSampleVideos(category?: Category): Video[] {
+  const ids = ["jNQXAC9IVRw", "aqz-KE-bpKQ", "YE7VzlLtp-4"];
+  const all: Video[] = (["motion", "broll", "ads"] as const).flatMap((c, ci) =>
+    ids.map((id, i) => ({
+      id: ci * 10 + i + 1,
+      category: c,
+      youtubeId: id,
+      title: "Project title",
+      subtitle: "Client type · what you did",
+      orientation: "vertical" as const,
+      sortOrder: i,
+      visible: true,
+      createdAt: new Date(0),
+    })),
+  );
+  return category ? all.filter((v) => v.category === category) : all;
 }
