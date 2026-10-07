@@ -1,22 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #0b2a35;
-  --bg-2: #0f3a48;
-  --bg-3: #081d26;
+  --bg: #ffffff;
+  --bg-soft: #f6f4ee;
+  --ink: #0b2a35;
+  --ink-2: #46606b;
+  --teal: #0f3a48;
+  --teal-deep: #082029;
   --gold: #f9bf4b;
-  --gold-deep: #e0a02b;
-  --cream: #fde9a9;
-  --text: #f6ebc4;
-  --muted: rgba(246, 235, 196, 0.72);
-  --line: rgba(249, 191, 75, 0.18);
-  --card: rgba(255, 255, 255, 0.04);
+  --gold-ink: #8a5a00;
+  --line: rgba(11, 42, 53, 0.12);
+  --shadow: 0 1px 2px rgba(11, 42, 53, 0.05), 0 12px 32px -12px rgba(11, 42, 53, 0.18);
 }
 
 @theme inline {
-  --color-bg: var(--bg);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
   --color-gold: var(--gold);
-  --color-cream: var(--cream);
+  --color-gold-ink: var(--gold-ink);
+  --color-teal: var(--teal);
   --font-sans: var(--font-dm-sans), system-ui, sans-serif;
   --font-display: var(--font-bricolage), var(--font-dm-sans), sans-serif;
 }
@@ -27,25 +29,20 @@ html {
 }
 
 body {
-  background:
-    radial-gradient(1100px 600px at 12% -8%, #1d5a6c55, transparent 60%),
-    radial-gradient(900px 600px at 95% 30%, #4a4a2c40, transparent 60%),
-    radial-gradient(900px 700px at 20% 90%, #14465a55, transparent 60%),
-    linear-gradient(180deg, var(--bg) 0%, var(--bg-3) 100%);
-  background-attachment: fixed;
-  color: var(--text);
+  background: var(--bg);
+  color: var(--ink);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
 }
 
 h1, h2, h3, .font-display {
   font-family: var(--font-display);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
 }
 
 .container-x {
   width: 100%;
-  max-width: 1120px;
+  max-width: 1160px;
   margin-inline: auto;
   padding-inline: 20px;
 }
@@ -53,19 +50,19 @@ h1, h2, h3, .font-display {
 .eyebrow {
   display: flex;
   align-items: center;
-  gap: 14px;
-  color: var(--gold);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.2em;
+  gap: 12px;
+  color: var(--gold-ink);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 }
-.eyebrow::after {
+.eyebrow::before {
   content: "";
-  width: 72px;
-  height: 1px;
+  width: 28px;
+  height: 2px;
+  border-radius: 2px;
   background: var(--gold);
-  opacity: 0.7;
 }
 
 .btn {
@@ -73,45 +70,69 @@ h1, h2, h3, .font-display {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  border-radius: 12px;
-  padding: 14px 22px;
+  border-radius: 999px;
+  padding: 13px 24px;
   font-weight: 600;
   font-size: 0.95rem;
   border: 1.5px solid transparent;
-  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+  transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
   cursor: pointer;
 }
 .btn:hover { transform: translateY(-1px); }
-.btn:focus-visible, a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
-  outline: 2px solid var(--gold);
+.btn:focus-visible, a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--ink);
   outline-offset: 3px;
 }
-.btn-gold { background: linear-gradient(180deg, #ffd06a, var(--gold)); color: #2a1d00; }
-.btn-gold:hover { background: linear-gradient(180deg, #ffd978, #ffc65a); }
-.btn-ghost { border-color: rgba(253, 233, 169, 0.55); color: var(--cream); background: transparent; }
-.btn-ghost:hover { border-color: var(--gold); background: rgba(249, 191, 75, 0.08); }
+.on-dark :focus-visible { outline-color: var(--gold); }
+.btn-gold { background: var(--gold); color: #2a1d00; box-shadow: 0 6px 18px -8px rgba(224, 160, 43, 0.8); }
+.btn-gold:hover { background: #ffc95e; }
+.btn-ink { background: var(--ink); color: #fff; }
+.btn-ink:hover { background: var(--teal); }
+.btn-ghost { border-color: rgba(11, 42, 53, 0.25); color: var(--ink); background: transparent; }
+.btn-ghost:hover { border-color: var(--ink); background: rgba(11, 42, 53, 0.04); }
+.on-dark .btn-ghost { border-color: rgba(255, 255, 255, 0.35); color: #fff; }
+.on-dark .btn-ghost:hover { border-color: #fff; background: rgba(255, 255, 255, 0.08); }
 
 .card {
-  background: var(--card);
+  background: #fff;
   border: 1px solid var(--line);
-  border-radius: 20px;
-  backdrop-filter: blur(6px);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
 }
 
 .field {
   width: 100%;
-  background: rgba(0, 0, 0, 0.25);
-  border: 1px solid var(--line);
+  background: #fff;
+  border: 1px solid rgba(11, 42, 53, 0.2);
   border-radius: 12px;
   padding: 12px 14px;
-  color: var(--text);
+  color: var(--ink);
 }
-.field::placeholder { color: rgba(246, 235, 196, 0.4); }
+.field::placeholder { color: rgba(11, 42, 53, 0.4); }
+.on-dark .field {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+.on-dark .field::placeholder { color: rgba(255, 255, 255, 0.45); }
 
-/* Hero timeline graphic */
+/* YouTube player crop: the iframe is made taller than its box so YouTube's
+   title/channel overlay and watermark fall in the cropped bars. */
+.yt-crop { position: absolute; inset: 0; overflow: hidden; }
+.yt-crop iframe {
+  position: absolute;
+  left: 0;
+  top: -80px;
+  width: 100%;
+  height: calc(100% + 160px);
+  border: 0;
+  pointer-events: none;
+}
+
+/* Hero editor window */
 @keyframes playhead {
-  0% { left: 2%; }
-  100% { left: 98%; }
+  0% { left: 3%; }
+  100% { left: 97%; }
 }
 @keyframes bars {
   0%, 100% { transform: scaleY(0.45); }
@@ -119,6 +140,9 @@ h1, h2, h3, .font-display {
 }
 .playhead { animation: playhead 9s linear infinite alternate; }
 .wave-bar { transform-origin: center; animation: bars 1.6s ease-in-out infinite; }
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
   .playhead, .wave-bar { animation: none; }

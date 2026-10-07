@@ -19,7 +19,7 @@ export async function saveContent(_prev: ActionState, formData: FormData): Promi
     await saveSettingsKey("about", {
       title: str(formData, "about_title", 120),
       body: str(formData, "about_body", 4000),
-      photoUrl: str(formData, "about_photo", 500),
+      photoUrl: current.about.photoUrl,
     });
     const services: ServiceItem[] = current.services.map((s, i) => ({
       ...s,

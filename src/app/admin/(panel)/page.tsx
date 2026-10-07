@@ -15,11 +15,11 @@ export default async function VideosPage({ searchParams }: { searchParams: Promi
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="font-display text-3xl font-extrabold text-cream">Videos</h1>
-        <p className="mt-1 text-[var(--muted)]">Upload to YouTube, paste the link here, and it appears on the site.</p>
+        <h1 className="font-display text-3xl font-extrabold text-ink">Videos</h1>
+        <p className="mt-1 text-ink-2">Upload to YouTube, paste the link here, and it appears on the site.</p>
       </div>
       {!dbReady && (
-        <p className="card p-4 text-sm text-red-300">DATABASE_URL is not set, so changes cannot be saved yet.</p>
+        <p className="card p-4 text-sm text-red-700">DATABASE_URL is not set, so changes cannot be saved yet.</p>
       )}
       <div className="flex flex-wrap gap-3">
         {CATEGORIES.map((c) => (
@@ -27,7 +27,7 @@ export default async function VideosPage({ searchParams }: { searchParams: Promi
             key={c}
             href={`/admin?cat=${c}`}
             className={`rounded-full border px-5 py-2.5 font-semibold ${
-              c === category ? "border-gold bg-gold text-[#2a1d00]" : "border-[var(--line)] text-cream hover:border-gold/60"
+              c === category ? "border-gold bg-gold text-[#2a1d00]" : "border-[var(--line)] text-ink hover:border-gold/60"
             }`}
           >
             {settings.categories[c].label}
@@ -38,7 +38,7 @@ export default async function VideosPage({ searchParams }: { searchParams: Promi
         <AddVideoForm key={category} category={category} />
         <div>
           {videos.length === 0 ? (
-            <p className="card p-6 text-[var(--muted)]">No videos in this category yet.</p>
+            <p className="card p-6 text-ink-2">No videos in this category yet.</p>
           ) : (
             <ul className="space-y-3">
               {videos.map((v, i) => (

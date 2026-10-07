@@ -8,15 +8,15 @@ export default function AccountForm({ username }: { username: string }) {
   const [state, action, pending] = useActionState(changeCredentials, undefined);
   return (
     <form action={action} className="card max-w-md space-y-4 p-6">
-      <label className="block text-sm font-medium text-cream">
+      <label className="block text-sm font-medium text-ink">
         New username
         <input name="username" defaultValue={username} required minLength={3} autoComplete="username" className="field mt-1.5" />
       </label>
-      <label className="block text-sm font-medium text-cream">
+      <label className="block text-sm font-medium text-ink">
         New password (8+ characters)
         <input name="password" type="password" required minLength={8} autoComplete="new-password" className="field mt-1.5" />
       </label>
-      <label className="block text-sm font-medium text-cream">
+      <label className="block text-sm font-medium text-ink">
         Current password
         <input name="current" type="password" required autoComplete="current-password" className="field mt-1.5" />
       </label>

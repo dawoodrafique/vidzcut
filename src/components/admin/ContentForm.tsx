@@ -7,7 +7,7 @@ import Status from "./Status";
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <label className="block text-sm font-medium text-cream">
+    <label className="block text-sm font-medium text-ink">
       {label}
       <div className="mt-1.5">{children}</div>
     </label>
@@ -19,7 +19,7 @@ export default function ContentForm({ settings }: { settings: Settings }) {
   return (
     <form action={action} className="space-y-8">
       <section className="card space-y-4 p-6">
-        <h2 className="font-display text-xl font-bold text-cream">Hero</h2>
+        <h2 className="font-display text-xl font-bold text-ink">Hero</h2>
         <Field label="Headline">
           <input name="hero_headline" defaultValue={settings.hero.headline} className="field" />
         </Field>
@@ -29,7 +29,7 @@ export default function ContentForm({ settings }: { settings: Settings }) {
       </section>
 
       <section className="card space-y-4 p-6">
-        <h2 className="font-display text-xl font-bold text-cream">Work categories</h2>
+        <h2 className="font-display text-xl font-bold text-ink">Work categories</h2>
         {CATEGORIES.map((c) => (
           <div key={c} className="grid gap-3 sm:grid-cols-[200px_1fr]">
             <Field label="Tab name">
@@ -43,7 +43,7 @@ export default function ContentForm({ settings }: { settings: Settings }) {
       </section>
 
       <section className="card space-y-4 p-6">
-        <h2 className="font-display text-xl font-bold text-cream">Services</h2>
+        <h2 className="font-display text-xl font-bold text-ink">Services</h2>
         {settings.services.map((s, i) => (
           <div key={i} className="grid gap-3 sm:grid-cols-[240px_1fr]">
             <Field label={`Service ${i + 1} title`}>
@@ -57,15 +57,12 @@ export default function ContentForm({ settings }: { settings: Settings }) {
       </section>
 
       <section className="card space-y-4 p-6">
-        <h2 className="font-display text-xl font-bold text-cream">About</h2>
+        <h2 className="font-display text-xl font-bold text-ink">About</h2>
         <Field label="Heading">
           <input name="about_title" defaultValue={settings.about.title} className="field" />
         </Field>
         <Field label="Text (blank line = new paragraph)">
           <textarea name="about_body" defaultValue={settings.about.body} rows={7} className="field" />
-        </Field>
-        <Field label="Photo link (optional, a direct image URL)">
-          <input name="about_photo" defaultValue={settings.about.photoUrl} placeholder="https://…" className="field" />
         </Field>
       </section>
 

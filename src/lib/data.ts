@@ -56,7 +56,7 @@ export async function getVideos(
 
 /** Local preview only: shown when no DATABASE_URL is set and `next dev` is running. */
 function devSampleVideos(category?: Category): Video[] {
-  const ids = ["jNQXAC9IVRw", "aqz-KE-bpKQ", "YE7VzlLtp-4"];
+  const ids = ["jNQXAC9IVRw", "aqz-KE-bpKQ", "YE7VzlLtp-4", "jNQXAC9IVRw", "aqz-KE-bpKQ", "YE7VzlLtp-4"];
   const all: Video[] = (["motion", "broll", "ads"] as const).flatMap((c, ci) =>
     ids.map((id, i) => ({
       id: ci * 10 + i + 1,

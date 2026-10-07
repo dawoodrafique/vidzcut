@@ -7,7 +7,7 @@ export default async function ContactAdminPage() {
   const { contact } = await getSettings();
   return (
     <div className="space-y-6">
-      <h1 className="font-display text-3xl font-extrabold text-cream">Contact details</h1>
+      <h1 className="font-display text-3xl font-extrabold text-ink">Contact details</h1>
       <ContactSettingsForm contact={contact} />
     </div>
   );

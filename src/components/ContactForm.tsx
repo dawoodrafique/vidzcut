@@ -29,26 +29,26 @@ export default function ContactForm() {
 
   if (status === "sent") {
     return (
-      <div className="card p-8 text-center" role="status">
-        <p className="font-display text-2xl font-bold text-cream">Message sent.</p>
-        <p className="mt-2 text-[var(--muted)]">Thanks! I&apos;ll get back to you soon.</p>
+      <div className="rounded-[24px] border border-white/15 bg-white/5 p-8 text-center" role="status">
+        <p className="font-display text-2xl font-bold text-white">Message sent.</p>
+        <p className="mt-2 text-white/70">Thanks! I&apos;ll get back to you soon.</p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={onSubmit} className="card space-y-4 p-6 md:p-8">
+    <form onSubmit={onSubmit} className="relative space-y-4 rounded-[24px] border border-white/15 bg-white/5 p-6 md:p-8">
       <div className="grid gap-4 sm:grid-cols-2">
-        <label className="block text-sm font-medium text-cream">
+        <label className="block text-sm font-medium text-white">
           Name
           <input name="name" required maxLength={100} autoComplete="name" className="field mt-1.5" placeholder="Your name" />
         </label>
-        <label className="block text-sm font-medium text-cream">
+        <label className="block text-sm font-medium text-white">
           Email
           <input name="email" type="email" required maxLength={200} autoComplete="email" className="field mt-1.5" placeholder="you@example.com" />
         </label>
       </div>
-      <label className="block text-sm font-medium text-cream">
+      <label className="block text-sm font-medium text-white">
         Tell me about your project
         <textarea name="message" required maxLength={2000} rows={5} className="field mt-1.5" placeholder="Video type, length, deadline, links to footage…" />
       </label>

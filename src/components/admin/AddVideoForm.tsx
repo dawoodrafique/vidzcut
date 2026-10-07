@@ -14,23 +14,23 @@ export default function AddVideoForm({ category }: { category: Category }) {
 
   return (
     <form ref={form} action={action} className="card space-y-4 p-6">
-      <h2 className="font-display text-xl font-bold text-cream">Add a video</h2>
+      <h2 className="font-display text-xl font-bold text-ink">Add a video</h2>
       <input type="hidden" name="category" value={category} />
-      <label className="block text-sm font-medium text-cream">
+      <label className="block text-sm font-medium text-ink">
         YouTube link
         <input name="url" required placeholder="https://youtube.com/shorts/…" className="field mt-1.5" />
       </label>
       <div className="grid gap-4 sm:grid-cols-2">
-        <label className="block text-sm font-medium text-cream">
+        <label className="block text-sm font-medium text-ink">
           Title
           <input name="title" maxLength={120} className="field mt-1.5" placeholder="Project title" />
         </label>
-        <label className="block text-sm font-medium text-cream">
+        <label className="block text-sm font-medium text-ink">
           Subtitle
           <input name="subtitle" maxLength={160} className="field mt-1.5" placeholder="Client type · what you did" />
         </label>
       </div>
-      <label className="block text-sm font-medium text-cream">
+      <label className="block text-sm font-medium text-ink">
         Shape
         <select name="orientation" className="field mt-1.5" defaultValue="vertical">
           <option value="vertical">Vertical reel (9:16)</option>
