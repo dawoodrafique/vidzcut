@@ -32,7 +32,7 @@ export default function Slider({ children, label }: { children: React.ReactNode;
   }
 
   const arrow =
-    "absolute top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white text-[var(--ink)] shadow-[0_10px_30px_-8px_rgba(11,42,53,0.45)] ring-1 ring-black/5 transition hover:scale-105 hover:bg-gold";
+    "absolute top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white text-[var(--ink)] shadow-[0_10px_30px_-8px_rgba(0,0,0,0.6)] ring-1 ring-black/5 transition hover:scale-105 hover:bg-gold";
 
   return (
     <div className="relative" role="region" aria-label={label}>
@@ -41,11 +41,11 @@ export default function Slider({ children, label }: { children: React.ReactNode;
       </div>
       <span
         aria-hidden="true"
-        className={`pointer-events-none absolute inset-y-0 left-0 w-14 bg-gradient-to-r from-[var(--bg-soft)] to-transparent transition-opacity ${can.left ? "opacity-100" : "opacity-0"}`}
+        className={`pointer-events-none absolute inset-y-0 left-0 w-14 bg-gradient-to-r from-[var(--fade)] to-transparent transition-opacity ${can.left ? "opacity-100" : "opacity-0"}`}
       />
       <span
         aria-hidden="true"
-        className={`pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[var(--bg-soft)] to-transparent transition-opacity ${can.right ? "opacity-100" : "opacity-0"}`}
+        className={`pointer-events-none absolute inset-y-0 right-0 w-20 bg-gradient-to-l from-[var(--fade)] to-transparent transition-opacity ${can.right ? "opacity-100" : "opacity-0"}`}
       />
       {can.left && (
         <button type="button" onClick={() => scroll(-1)} aria-label="Scroll left" className={`${arrow} -left-3 sm:-left-5`}>

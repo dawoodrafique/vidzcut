@@ -138,13 +138,39 @@ h1, h2, h3, .font-display {
   0%, 100% { transform: scaleY(0.45); }
   50% { transform: scaleY(1); }
 }
+@keyframes aurora {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(60px, 30px) scale(1.25); }
+  100% { transform: translate(-20px, 60px) scale(0.95); }
+}
+@keyframes capword {
+  0% { opacity: 0; transform: translateY(14px) scale(0.92); }
+  4% { opacity: 1; transform: translateY(0) scale(1.04); }
+  8%, 22% { opacity: 1; transform: translateY(0) scale(1); }
+  26%, 100% { opacity: 0; transform: translateY(-12px) scale(0.98); }
+}
+@keyframes floaty {
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  50% { transform: translateY(-10px) rotate(-2deg); }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
 .playhead { animation: playhead 9s linear infinite alternate; }
 .wave-bar { transform-origin: center; animation: bars 1.6s ease-in-out infinite; }
+.aurora { animation: aurora 14s ease-in-out infinite alternate; }
+.cap-word { animation: capword 8s ease-out infinite; }
+.float-a { animation: floaty 6s ease-in-out infinite; }
+.float-b { animation: floaty 7s ease-in-out infinite reverse; }
+.rec-dot { animation: blink 1.2s ease-in-out infinite; }
 
 .no-scrollbar { scrollbar-width: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
-  .playhead, .wave-bar { animation: none; }
+  .playhead, .wave-bar, .aurora, .float-a, .float-b, .rec-dot { animation: none; }
+  .cap-word { animation: none; }
+  .cap-word:first-child { opacity: 1; }
   html { scroll-behavior: auto; }
 }

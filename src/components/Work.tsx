@@ -24,11 +24,13 @@ export default function Work({
   const count = (c: Category) => videos.filter((v) => v.category === c).length;
 
   return (
-    <section id="work" className="bg-[var(--bg-soft)] py-24">
-      <div className="container-x grid gap-12 lg:grid-cols-[290px_minmax(0,1fr)]">
+    <section id="work" className="on-dark relative overflow-hidden bg-[#0c3240] py-24 text-white [--fade:#0c3240]">
+      <span aria-hidden="true" className="pointer-events-none absolute -left-32 -top-32 h-[420px] w-[420px] rounded-full bg-[#2a8ba3]/25 blur-3xl" />
+      <span aria-hidden="true" className="pointer-events-none absolute -bottom-40 left-1/3 h-[380px] w-[380px] rounded-full bg-gold/10 blur-3xl" />
+      <div className="container-x relative grid gap-12 lg:grid-cols-[290px_minmax(0,1fr)]">
         <div className="lg:sticky lg:top-28 lg:self-start">
-          <p className="eyebrow">01 / Work</p>
-          <h2 className="mt-4 text-4xl font-extrabold text-ink md:text-5xl">My work</h2>
+          <p className="eyebrow !text-gold">01 / Work</p>
+          <h2 className="mt-4 text-4xl font-extrabold text-white md:text-5xl">My work</h2>
           <div role="tablist" aria-label="Work categories" className="mt-8 flex flex-wrap gap-2.5 lg:flex-col lg:gap-3">
             {CATEGORIES.map((c) => (
               <button
@@ -39,22 +41,22 @@ export default function Work({
                 className={`flex items-center justify-between gap-6 rounded-full border px-6 py-3.5 text-left font-semibold transition ${
                   active === c
                     ? "border-gold bg-gold text-[#2a1d00] shadow-[0_8px_20px_-10px_rgba(224,160,43,0.9)]"
-                    : "border-[var(--line)] bg-white text-ink hover:border-ink/40"
+                    : "border-white/15 bg-white/5 text-white hover:border-white/40 hover:bg-white/10"
                 }`}
               >
                 {categories[c].label}
-                <span className={`text-xs font-bold tabular-nums ${active === c ? "text-[#2a1d00]/70" : "text-ink-2"}`}>
+                <span className={`text-xs font-bold tabular-nums ${active === c ? "text-[#2a1d00]/70" : "text-white/50"}`}>
                   {String(count(c)).padStart(2, "0")}
                 </span>
               </button>
             ))}
           </div>
-          <p className="mt-7 max-w-[34ch] leading-relaxed text-ink-2">{categories[active].description}</p>
+          <p className="mt-7 max-w-[34ch] leading-relaxed text-white/70">{categories[active].description}</p>
         </div>
 
         <div role="tabpanel" className="min-w-0 space-y-12">
           {items.length === 0 && (
-            <div className="flex min-h-[280px] items-center justify-center rounded-[24px] border border-dashed border-ink/20 bg-white/60 p-8 text-center text-ink-2">
+            <div className="flex min-h-[280px] items-center justify-center rounded-[24px] border border-dashed border-white/25 bg-white/5 p-8 text-center text-white/70">
               New {categories[active].label.toLowerCase()} projects are coming soon.
             </div>
           )}

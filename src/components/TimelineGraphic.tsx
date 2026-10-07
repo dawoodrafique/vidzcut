@@ -29,12 +29,41 @@ export default function TimelineGraphic() {
         <span className="ml-3 text-xs font-medium text-white/60">final_edit.mp4</span>
       </div>
 
-      <div className="relative aspect-video overflow-hidden rounded-2xl bg-[radial-gradient(120%_120%_at_30%_20%,#1f6a80_0%,#0d3442_55%,#071b23_100%)] ring-1 ring-white/10">
-        <div className="absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.08)_1px,transparent_1px)] [background-size:40px_40px]" />
-        <span className="absolute left-1/2 top-1/2 flex h-16 w-16 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white/15 text-white ring-1 ring-white/50 backdrop-blur-md">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" className="ml-0.5">
-            <path d="M7 4.8v14.4a1 1 0 0 0 1.5.86l12-7.2a1 1 0 0 0 0-1.72l-12-7.2A1 1 0 0 0 7 4.8z" />
-          </svg>
+      <div className="relative aspect-video overflow-hidden rounded-2xl bg-[#0a2b36] ring-1 ring-white/10">
+        {/* drifting colour glows */}
+        <span className="aurora absolute -left-10 -top-16 h-56 w-56 rounded-full bg-[#2a8ba3]/60 blur-3xl" />
+        <span className="aurora absolute -bottom-20 right-0 h-56 w-56 rounded-full bg-gold/35 blur-3xl [animation-delay:-6s] [animation-direction:alternate-reverse]" />
+        <span className="aurora absolute left-1/3 top-1/3 h-40 w-40 rounded-full bg-[#14465a] blur-3xl [animation-delay:-12s]" />
+        <div className="absolute inset-0 opacity-25 [background-image:linear-gradient(rgba(255,255,255,0.09)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.09)_1px,transparent_1px)] [background-size:36px_36px]" />
+
+        {/* floating reel frames */}
+        <div className="float-a absolute left-[7%] top-[14%] h-[58%] w-[17%] rounded-xl bg-gradient-to-b from-[#ffd06a] to-[#e0a02b] p-[3px] shadow-xl">
+          <div className="flex h-full w-full items-end rounded-[9px] bg-gradient-to-b from-[#17566b] to-[#082029] p-1.5">
+            <span className="h-1 w-3/5 rounded-full bg-white/60" />
+          </div>
+        </div>
+        <div className="float-b absolute right-[7%] top-[22%] h-[58%] w-[17%] rounded-xl bg-white/90 p-[3px] shadow-xl">
+          <div className="flex h-full w-full items-end rounded-[9px] bg-gradient-to-b from-[#2a8ba3] to-[#0d3442] p-1.5">
+            <span className="h-1 w-2/3 rounded-full bg-white/60" />
+          </div>
+        </div>
+
+        {/* kinetic captions */}
+        <div className="absolute inset-0 flex items-center justify-center">
+          {["Sharp cuts", "Clean sound", "Smooth motion", "Hooks that stick"].map((w, i) => (
+            <span
+              key={w}
+              style={{ animationDelay: `${i * 2}s` }}
+              className="cap-word absolute whitespace-nowrap rounded-xl bg-gold px-4 py-2 font-display text-lg font-extrabold uppercase tracking-tight text-[#2a1d00] opacity-0 shadow-[0_10px_30px_-8px_rgba(0,0,0,0.5)] sm:text-2xl"
+            >
+              {w}
+            </span>
+          ))}
+        </div>
+
+        <span className="absolute right-3 top-3 flex items-center gap-1.5 rounded-full bg-black/35 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-white backdrop-blur">
+          <span className="rec-dot h-1.5 w-1.5 rounded-full bg-red-400" />
+          Editing
         </span>
         <span className="absolute bottom-3 left-4 text-[11px] font-medium text-white/70">Raw footage 14:32</span>
         <span className="absolute bottom-3 right-4 rounded-full bg-gold px-2.5 py-0.5 text-[11px] font-bold text-[#2a1d00]">Final edit 8:10</span>
